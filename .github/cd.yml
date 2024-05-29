@@ -1,0 +1,21 @@
+name: exemplo
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: pull docker
+        run: docker pull jgmatosmota/cicd:1.0
+      - name: stop docker
+        run: docker stop cicd || true
+
+      - name: remove docker
+        run: docker rm cicd || true
+      - name: run docker
+        run: docker run -d --name cicd -p 8080:8080 jgmatosmota/cicd:1.0
