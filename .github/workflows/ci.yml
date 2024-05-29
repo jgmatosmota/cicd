@@ -1,8 +1,13 @@
 name: exemplo
 
 on:
-    push:
-        branches: [ main ]
+    pull_request:
+        branches: 
+          - main
+          - develop
+        types:
+          - opened
+          - reopened
 jobs:
     build:
         runs-on: ubuntu:latest
