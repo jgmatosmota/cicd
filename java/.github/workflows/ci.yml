@@ -1,0 +1,19 @@
+name: exemplo
+
+on:
+    push:
+        branches: [ main ]
+jobs:
+    build:
+        runs-on: ubuntu:latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: jdk
+              run: actions/setup-java@v4
+              with: 
+                distribution: 'temurin'
+                java-version: '17'
+            - name: build maven
+              run: mvn -B package -DskipTests
+        
