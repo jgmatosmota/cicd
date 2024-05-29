@@ -10,7 +10,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
             - name: jdk
-              run: actions/setup-java@v4
+              uses: actions/setup-java@v4
               with: 
                 distribution: 'temurin'
                 java-version: '17'
